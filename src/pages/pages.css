@@ -1,0 +1,20 @@
+.page{padding:1rem;max-width:900px;margin:0 auto}
+.hero{background:#f9fafb;padding:2.5rem 2rem;border-radius:16px;margin-bottom:1.5rem;min-height:180px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,0.05)}
+.hero h1{color:#000;margin:0 0 1rem;font-size:2rem}
+.hero p{color:#333;margin:0}
+.layout{display:flex;gap:1rem}
+.filters{width:220px;background:linear-gradient(135deg,#06b6d4 0%,#61d34a 100%);color:#4beb35;padding:1rem;border-radius:8px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
+.filters h4, .filters label, .filters select{color:#f5ecec}
+.results{flex:1;display:grid;grid-template-columns:1fr;gap:0.75rem;max-width:900px;margin:0 auto}
+@media(min-width:800px){.results{grid-template-columns:repeat(2,1fr)}.layout{align-items:start}}
+.auth{display:flex;flex-direction:column;gap:0.5rem;max-width:360px}
+.searchbar{display:flex;gap:0.5rem}
+.searchbar input{flex:1;padding:0.6rem;border-radius:8px;border:1px solid #e6eef6}
+.searchbar button{padding:0.6rem;border-radius:8px;background:#0eaf16;color:#fff;border:0}
+/* profile view */
+.profile-card{max-width:600px;margin:0 auto;background:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
+@media(max-width:640px){.profile-card{padding:1rem}}
+/* jobcard variants for frontend/back-end jobs */
+.jobcard.frontend-job{background:linear-gradient(135deg,#3b99e6 0%,hwb(125 33% 13%) 100%)}
+.jobcard.backend-job{background:linear-gradient(135deg,hsl(0, 93%, 54%) 0%,#3ae665 100%)}
+ 

@@ -1,0 +1,6 @@
+.nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;background:linear-gradient(90deg,#0f1724,#0b1220);color:#fff}
+.nav .brand{font-weight:700;color:#fff;text-decoration:none}
+.nav .brand span{color:#60a5fa}
+.nav a{color:rgba(255,255,255,0.9);margin:0 0.5rem;text-decoration:none}
+.nav .btn{background:#fff;color:#0b1220;padding:0.4rem 0.8rem;border-radius:6px}
+@media(max-width:640px){.nav-center{display:none}.nav{padding:0.5rem}}

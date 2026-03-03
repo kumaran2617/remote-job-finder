@@ -1,0 +1,9 @@
+.jobcard{background:#fff;border-radius:10px;padding:1rem;margin:0.5rem 0;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
+.jobcard-header{display:flex;align-items:center;gap:1rem}
+.logo-placeholder{width:48px;height:48px;border-radius:8px;background:#eef2ff;display:flex;align-items:center;justify-content:center;font-weight:700}
+.company{color:#64748b;font-size:0.9rem}
+.job-location{color:#94a3b8;font-size:0.85rem;margin-top:0.5rem}
+.job-excerpt{margin-top:0.75rem;color:#334155}
+.save-btn{background:transparent;border:1px solid #e2e8f0;padding:0.4rem 0.6rem;border-radius:6px}
+.save-btn.saved{background:#0ea5a4;color:#fff;border-color:transparent}
+@media(min-width:768px){.jobcard{display:block}}
