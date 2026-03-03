@@ -1,19 +1,25 @@
-.page{padding:1rem;max-width:900px;margin:0 auto}
-.hero{background:#f9fafb;padding:2.5rem 2rem;border-radius:16px;margin-bottom:1.5rem;min-height:180px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 10px 30px rgba(0,0,0,0.05)}
-.hero h1{color:#000;margin:0 0 1rem;font-size:2rem}
-.hero p{color:#333;margin:0}
-.layout{display:flex;gap:1rem}
-.filters{width:220px;background:linear-gradient(135deg,#06b6d4 0%,#61d34a 100%);color:#4beb35;padding:1rem;border-radius:8px;box-shadow:0 6px 18px rgba(2,6,23,0.06)}
-.filters h4, .filters label, .filters select{color:#f5ecec}
-.results{flex:1;display:grid;grid-template-columns:1fr;gap:0.75rem;max-width:900px;margin:0 auto}
+.page{padding:1rem;max-width:1000px;margin:0 auto}
+.hero{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);padding:3.5rem 2.5rem;border-radius:20px;margin-bottom:2.5rem;min-height:200px;display:flex;flex-direction:column;justify-content:center;box-shadow:0 20px 60px rgba(102,126,234,0.3);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-50%;width:500px;height:500px;background:radial-gradient(circle,rgba(255,255,255,0.1) 0%,transparent 70%);border-radius:50%}
+.hero h1{color:#fff;margin:0 0 0.5rem;font-size:2.5rem;font-weight:700;position:relative;z-index:1}
+.hero p{color:rgba(255,255,255,0.9);margin:0;font-size:1.1rem;position:relative;z-index:1}
+.layout{display:flex;gap:1.5rem}
+.filters{width:240px;background:linear-gradient(135deg,#06b6d4 0%,#61d34a 100%);color:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 15px 40px rgba(6,182,212,0.25);border:1px solid rgba(255,255,255,0.2)}
+.filters h4, .filters label, .filters select{color:#fff;font-weight:600}
+.results{flex:1;display:grid;grid-template-columns:1fr;gap:1rem;max-width:1000px;margin:0 auto}
 @media(min-width:800px){.results{grid-template-columns:repeat(2,1fr)}.layout{align-items:start}}
-.auth{display:flex;flex-direction:column;gap:0.5rem;max-width:360px}
-.searchbar{display:flex;gap:0.5rem}
-.searchbar input{flex:1;padding:0.6rem;border-radius:8px;border:1px solid #e6eef6}
-.searchbar button{padding:0.6rem;border-radius:8px;background:#0eaf16;color:#fff;border:0}
+.auth{display:flex;flex-direction:column;gap:0.75rem;max-width:360px}
+.searchbar{display:flex;gap:0.75rem}
+.searchbar input{flex:1;padding:0.75rem 1rem;border-radius:10px;border:2px solid #e6eef6;transition:all 0.3s ease;font-size:1rem}
+.searchbar input:focus{outline:none;border-color:#667eea;box-shadow:0 0 0 3px rgba(102,126,234,0.1)}
+.searchbar button{padding:0.75rem 1.5rem;border-radius:10px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border:0;cursor:pointer;font-weight:600;transition:all 0.3s ease}
+.searchbar button:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(102,126,234,0.4)}
 /* profile view */
-.profile-card{max-width:600px;margin:0 auto;background:#fff;padding:1.5rem;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.08)}
-@media(max-width:640px){.profile-card{padding:1rem}}
+.profile-card{max-width:600px;margin:0 auto;background:#fff;padding:2.5rem;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.1);border:1px solid rgba(0,0,0,0.05)}
+.profile-card h2{color:#1a202c;margin-top:0;margin-bottom:1.5rem;font-size:1.8rem}
+.profile-card p{color:#4a5568;margin:1rem 0;font-size:1.05rem;display:flex;align-items:center;gap:0.75rem}
+.profile-card strong{color:#2d3748;font-weight:600}
+@media(max-width:640px){.profile-card{padding:1.5rem}}
 /* jobcard variants for frontend/back-end jobs */
 .jobcard.frontend-job{background:linear-gradient(135deg,#3b99e6 0%,hwb(125 33% 13%) 100%)}
 .jobcard.backend-job{background:linear-gradient(135deg,hsl(0, 93%, 54%) 0%,#3ae665 100%)}

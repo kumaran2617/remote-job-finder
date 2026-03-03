@@ -1,6 +1,6 @@
 {
   "name": "mini2",
-  "homepage": "https://kumaran2617.githup.io/remote job finder ui",
+  "homepage": "https://kumaran2617.github.io/remote-job-finder-ui",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "npm run build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "react": "^19.2.0",
