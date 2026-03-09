@@ -1,14 +1,262 @@
-.jobcard{background:#fff;border-radius:14px;padding:1.5rem;margin:0;box-shadow:0 10px 30px rgba(0,0,0,0.08);transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);border:1px solid rgba(0,0,0,0.05);cursor:pointer}
-.jobcard:hover{transform:translateY(-8px);box-shadow:0 20px 50px rgba(0,0,0,0.15);border-color:rgba(102,126,234,0.2)}
-.jobcard-header{display:flex;align-items:center;gap:1.25rem}
-.logo-placeholder{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;font-size:1.25rem;box-shadow:0 6px 20px rgba(102,126,234,0.3)}
-.jobcard-header > div:nth-child(2){flex:1}
-.jobcard h3{color:#1a202c;margin:0;font-size:1.25rem;font-weight:700}
-.company{color:#718096;font-size:0.95rem;margin-top:0.35rem;font-weight:500}
-.job-location{color:#a0aec0;font-size:0.9rem;margin-top:1rem;display:flex;align-items:center;gap:0.5rem}
-.job-excerpt{margin-top:1rem;color:#4a5568;line-height:1.6;font-size:0.95rem}
-.job-actions{display:flex;gap:0.5rem}
-.save-btn{background:transparent;border:2px solid #e2e8f0;padding:0.5rem 0.75rem;border-radius:8px;cursor:pointer;transition:all 0.3s ease;color:#64748b;font-weight:500;font-size:0.85rem}
-.save-btn:hover{border-color:#667eea;color:#667eea;background:rgba(102,126,234,0.05)}
-.save-btn.saved{background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);color:#fff;border-color:transparent;box-shadow:0 6px 20px rgba(102,126,234,0.4)}
-@media(min-width:768px){.jobcard{display:block}}
+.jobcard {
+  --accent-a: #2563eb;
+  --accent-b: #0ea5e9;
+  --accent-tint: rgba(37, 99, 235, 0.08);
+  --accent-ring: rgba(37, 99, 235, 0.24);
+  --card-bg-start: #ffffff;
+  --card-bg-end: #fbfdff;
+  position: relative;
+  background: linear-gradient(180deg, var(--card-bg-start) 0%, var(--card-bg-end) 100%);
+  border-radius: 18px;
+  padding: 1.2rem;
+  margin: 0;
+  border: 1px solid #d9e2ec;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.09);
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+  overflow: hidden;
+}
+
+.jobcard::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--accent-a), var(--accent-b));
+}
+
+.jobcard:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent-ring);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+}
+
+.jobcard-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.jobcard-header > div:nth-child(2) {
+  flex: 1;
+}
+
+.logo-placeholder {
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #fff;
+  font-size: 1.2rem;
+  box-shadow: 0 10px 22px var(--accent-tint);
+}
+
+.role-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.24rem 0.6rem;
+  border-radius: 999px;
+  background: var(--accent-tint);
+  color: #0f172a;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.4rem;
+}
+
+.jobcard h3 {
+  color: #0f172a;
+  margin: 0;
+  font-size: 1.16rem;
+  font-weight: 700;
+}
+
+.company {
+  color: #64748b;
+  font-size: 0.9rem;
+  margin-top: 0.28rem;
+  font-weight: 600;
+}
+
+.job-location {
+  color: #475569;
+  font-size: 0.9rem;
+  margin-top: 0.82rem;
+}
+
+.job-excerpt {
+  margin-top: 0.88rem;
+  color: #334155;
+  line-height: 1.55;
+  font-size: 0.92rem;
+}
+
+.job-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.85rem;
+}
+
+.job-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.32rem 0.58rem;
+  border-radius: 999px;
+  background: #f1f5f9;
+  border: 1px solid #dce7f4;
+  color: #334155;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.jobcard-footer {
+  margin-top: 0.92rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #64748b;
+  font-size: 0.84rem;
+}
+
+.details-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.8rem;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+  color: #fff;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.job-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.save-btn {
+  background: #fff;
+  border: 1px solid #d0dae6;
+  padding: 0.45rem 0.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  color: #475569;
+  font-weight: 600;
+  font-size: 0.82rem;
+}
+
+.save-btn:hover {
+  border-color: var(--accent-ring);
+  color: #0f172a;
+  background: var(--accent-tint);
+}
+
+.save-btn.saved {
+  background: linear-gradient(135deg, var(--accent-a), var(--accent-b));
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 18px var(--accent-tint);
+}
+
+.jobcard.role-frontend {
+  --accent-a: #2563eb;
+  --accent-b: #06b6d4;
+  --accent-tint: rgba(37, 99, 235, 0.18);
+  --accent-ring: rgba(14, 165, 233, 0.4);
+  --card-bg-start: #f8fbff;
+  --card-bg-end: #f0f8ff;
+}
+
+.jobcard.role-backend {
+  --accent-a: #7c3aed;
+  --accent-b: #4f46e5;
+  --accent-tint: rgba(124, 58, 237, 0.16);
+  --accent-ring: rgba(124, 58, 237, 0.35);
+}
+
+.jobcard.role-fullstack {
+  --accent-a: #059669;
+  --accent-b: #0ea5a4;
+  --accent-tint: rgba(5, 150, 105, 0.16);
+  --accent-ring: rgba(5, 150, 105, 0.34);
+}
+
+.jobcard.role-design {
+  --accent-a: #db2777;
+  --accent-b: #f97316;
+  --accent-tint: rgba(219, 39, 119, 0.16);
+  --accent-ring: rgba(249, 115, 22, 0.34);
+}
+
+.jobcard.role-data {
+  --accent-a: #0f766e;
+  --accent-b: #14b8a6;
+  --accent-tint: rgba(15, 118, 110, 0.16);
+  --accent-ring: rgba(20, 184, 166, 0.34);
+}
+
+.jobcard.role-devops {
+  --accent-a: #ea580c;
+  --accent-b: #f59e0b;
+  --accent-tint: rgba(234, 88, 12, 0.16);
+  --accent-ring: rgba(245, 158, 11, 0.34);
+}
+
+.jobcard.role-mobile {
+  --accent-a: #be123c;
+  --accent-b: #f43f5e;
+  --accent-tint: rgba(190, 18, 60, 0.16);
+  --accent-ring: rgba(244, 63, 94, 0.34);
+}
+
+.jobcard.role-qa {
+  --accent-a: #334155;
+  --accent-b: #64748b;
+  --accent-tint: rgba(51, 65, 85, 0.14);
+  --accent-ring: rgba(100, 116, 139, 0.34);
+}
+
+.jobcard.role-general {
+  --accent-a: #0284c7;
+  --accent-b: #0891b2;
+  --accent-tint: rgba(2, 132, 199, 0.14);
+  --accent-ring: rgba(8, 145, 178, 0.34);
+}
+
+@media (max-width: 640px) {
+  .jobcard {
+    padding: 1rem;
+  }
+
+  .jobcard-header {
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .logo-placeholder {
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+    border-radius: 11px;
+  }
+
+  .jobcard h3 {
+    font-size: 1.03rem;
+  }
+
+  .job-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .jobcard-footer {
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+}

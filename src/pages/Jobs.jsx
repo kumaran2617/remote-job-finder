@@ -1,24 +1,42 @@
-import JobCard from '../components/JobCard'
+import { useMemo, useState } from "react";
+import JobCard from "../components/JobCard";
+import SearchBar from "../components/SearchBar";
+import { useJobs } from "../context/JobsContext";
+import "./pages.css";
 
-export default function Jobs(){
-  const jobs = [
-    {id:1,title:'Frontend Engineer',company:'TechCorp',type:'Full-time',location:'Remote',excerpt:'Build beautiful and responsive user interfaces with React, TypeScript, and modern CSS.'},
-    {id:2,title:'Backend Developer',company:'CloudSys',type:'Full-time',location:'Remote',excerpt:'Develop scalable APIs and microservices using Node.js and PostgreSQL.'},
-    {id:3,title:'Full Stack Developer',company:'StartupXYZ',type:'Contract',location:'Remote',excerpt:'End-to-end development of web applications with modern tech stack.'},
-    {id:4,title:'UI/UX Designer',company:'DesignHub',type:'Part-time',location:'Remote',excerpt:'Create stunning user experiences and design systems for our products.'},
-    {id:5,title:'DevOps Engineer',company:'InfraCloud',type:'Full-time',location:'Remote',excerpt:'Manage infrastructure, CI/CD pipelines, and cloud deployments.'},
-    {id:6,title:'Data Analyst',company:'DataDriven',type:'Full-time',location:'Remote',excerpt:'Transform data into actionable insights using Python and analytics tools.'},
-  ]
-  
+export default function Jobs() {
+  const { jobs } = useJobs();
+  const [query, setQuery] = useState("");
+
+  const filteredJobs = useMemo(() => {
+    const normalizedQuery = query.trim().toLowerCase();
+    return jobs.filter((job) => {
+      if (!normalizedQuery) return true;
+      return [job.title, job.company, job.location, job.type, ...(job.skills || [])]
+        .join(" ")
+        .toLowerCase()
+        .includes(normalizedQuery);
+    });
+  }, [jobs, query]);
+
   return (
     <main className="page">
       <header className="hero">
         <h1>Browse All Jobs</h1>
-        <p>Discover amazing opportunities to grow your career</p>
+        <p>Find the role that matches your skills and preferred location.</p>
+        <SearchBar value={query} onChange={setQuery} />
       </header>
+
       <div className="results">
-        {jobs.map(j=> <JobCard job={j} key={j.id} />)}
+        {filteredJobs.length ? (
+          filteredJobs.map((job) => <JobCard job={job} key={job.id} />)
+        ) : (
+          <div className="empty-state">
+            <h3>No matching jobs</h3>
+            <p>Update your search keyword to see more opportunities.</p>
+          </div>
+        )}
       </div>
     </main>
-  )
+  );
 }
